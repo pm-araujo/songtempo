@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700");
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+// Theme delays (transitions and such)
+$Theme-delay-fast: 0.1s;
+$Theme-delay-normal: 0.3s;
+$Theme-delay-slow: 0.6s;
+
+// Theme Font Faces
+$Theme-font-families: (
+  sans: 'Open Sans',
+	title: 'Montserrat'
+);
+
+// Theme sizes
+$Theme-size-tiny: 5px;
+$Theme-size-xSmall: 10px;
+$Theme-size-small: 20px;
+$Theme-size-medium: 40px;
+$Theme-size-large: 80px;
+$Theme-size-xLarge: 100px;
+
+$Theme-color-main: #F97508;
+$Theme-color-light: #FFFFFF;
+$Theme-color-grey: #C0C0C0;
+$Theme-color-dark: #292A2D;
+$Theme-color-dark-light: #414348;
+$Theme-color-background: #F6F7FB;
+$Theme-color-subsection: #F0F0F0;
+$Theme-color-subsection-light: #FCFCFC;
+$Theme-color-subsection-dark: #DEDEDE;
+$Theme-color-placeholder: #7D7D7D;
+$Theme-color-red: #FF0000;
+
+// opacities
+
+// Theme Font Sizes
+$Theme-font-sizes: (
+  desktop: (
+    title: ( font-size: 30px, line-height: 40px ),
+    larger: ( font-size: 24px, line-height: 32px ),
+		large: ( font-size: 20px, line-height: 30px ),
+    base: ( font-size: 16px, line-height: 28px ),
+    small: ( font-size: 14px, line-height: 22px ),
+    smaller: ( font-size: 12px, line-height: 14px ),
+		tiny: (font-size: 10px, line-height: 12px)
+  ), mobile: (
+    title: ( font-size: 30px, line-height: 40px ),
+    larger: ( font-size: 24px, line-height: 32px ),
+		large: ( font-size: 20px, line-height: 30px ),
+    base: ( font-size: 16px, line-height: 28px ),
+    small: ( font-size: 14px, line-height: 22px ),
+    smaller: ( font-size: 12px, line-height: 14px ),
+		tiny: ( font-size: 10px, line-height: 12px)
+  )
+);
+
+/* Usage:
+    @include font-properties(small);                    // presumes desktop resolution and font-family: sans
+    @include font-properties(large, mobile);            // presumes font-family: sans
+    @include font-properties( title, desktop, sans );  // presumes nothing, no fields omitted
+
+*/
+@mixin font-properties($size: 'base', $resolution: 'desktop', $family: 'sans', $line-height: true) {
+  font-family: map-get($Theme-font-families, $family);
+  font-size:
+    map-get(
+      map-get(
+        map-get($Theme-font-sizes, $resolution),
+        $size
+      ),
+      'font-size'
+    );
+
+	@if $line-height {
+	  line-height:
+	    map-get(
+	      map-get(
+	        map-get($Theme-font-sizes, $resolution),
+	        $size
+	      ),
+	      'line-height'
+	    );
+	}
+}

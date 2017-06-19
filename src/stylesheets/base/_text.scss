@@ -1,0 +1,9 @@
+.Text {
+  @include font-properties(base);
+
+  color: $Theme-color-dark;
+}
+
+.Text-orange {
+  color: $Theme-color-main;
+}
