@@ -1,0 +1,22 @@
+.Footer {
+  @include font-properties(small);
+
+  align-items: center;
+  background: $Theme-color-dark;
+  color: $Theme-color-light;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $Theme-size-xSmall;
+  width: 100%;
+}
+
+.Footer-link {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

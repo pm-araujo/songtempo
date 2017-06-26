@@ -1,0 +1,21 @@
+.Button {
+  @include font-properties(base);
+
+  background: $Theme-color-light;
+  border: 0;
+  color: $Theme-color-dark;
+  cursor: pointer;
+  font-weight: 600;
+  padding: $Theme-size-tiny;
+  padding-left: $Theme-size-xSmall;
+  padding-right: $Theme-size-xSmall;
+  text-align: center;
+
+  &:hover {
+    background: $Theme-color-grey;
+  }
+}
+
+.Button--round {
+  border-radius: 50%;
+}

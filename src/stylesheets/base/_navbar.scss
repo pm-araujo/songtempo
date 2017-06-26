@@ -1,0 +1,14 @@
+.Navbar {
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+  padding-top: $Theme-size-tiny;
+  padding-bottom: $Theme-size-xSmall;
+  display: flex;
+  justify-content: center;
+}
+
+.MainHeader {
+  @include font-properties(title, desktop, title);
+
+  color: $Theme-color-dark;
+  margin: 0;
+}

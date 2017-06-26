@@ -1,0 +1,39 @@
+$metro-height: 40px;
+
+.Metronome {
+  height: $metro-height;
+  display: inline-block;
+  opacity: 0.75;
+  top: $Theme-size-xSmall;
+  position: relative;
+}
+
+.Metronome-base {
+  height: $metro-height;
+}
+
+.Metronome-pointer {
+  height: $metro-height;
+  position:absolute;
+  top: -8px;
+  left: 13px;
+  transform: rotateZ(-45deg);
+  transform-origin: bottom;
+
+  animation: 1s metronome linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes metronome {
+    0% {
+      transform: rotateZ(-45deg);
+    }
+
+    50% {
+      transform: rotateZ(45deg);
+    }
+
+    100% {
+      transform: rotateZ(-45deg);
+    }
+}
