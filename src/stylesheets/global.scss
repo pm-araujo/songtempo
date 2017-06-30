@@ -16,3 +16,8 @@
 *, *:before, *:after {
 	box-sizing: border-box;
 }
+
+.fa-icon {
+  width: auto;
+  height: 1em; /* or any other relative font sizes */
+}
