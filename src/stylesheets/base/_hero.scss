@@ -38,19 +38,19 @@
   display: flex;
   justify-content: center;
 
-  transform: translate(0, -50px);
+  transform: translate(0, -75px);
   transition: transform 0.3s ease;
 
-  z-index: 1;
+  z-index: 20;
   width: 100%;
 }
 
 .Hero-bpmWrapper--hidden {
-  transform: translate(0, -75px);
+  transform: translate(0, -100px);
 }
 
 .Hero-bpmWrapper--peek {
-  transform: translate(0, -50px);
+  transform: translate(0, -75px);
 }
 
 .Hero-bpmWrapper--open {
@@ -67,6 +67,7 @@
 .Hero-radialPulse {
   z-index: 1;
   animation: radialPulse 1s infinite linear forwards;
+  animation-play-state: paused;
   position: absolute;
   background-image: repeating-radial-gradient(
     circle at top center,

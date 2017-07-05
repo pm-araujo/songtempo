@@ -4,6 +4,9 @@
 
     <div :class="bpmControlsClass" class="Hero-bpmWrapper">
       <div class="Hero-bpmControls">
+        <button class="Button" @click="toggleBpmClick">
+          <icon :style="{opacity: bpmClickMuted ? 0.5 : 1}" name="music"></icon>
+        </button>
         <button class="Button" @click="incrementBpm">Faster</button>
         <button class="Button" @click="decrementBpm">Slower</button>
         <button class="Button Button--roundBot" @click="openControls">
@@ -45,20 +48,27 @@
   import { mapGetters, mapActions } from 'vuex'
 
   export default {
+    data () {
+      return {
+        'appLoaded': false
+      }
+    },
     computed: {
       ...mapGetters({
-        bpmControls: 'getControlsState'
+        bpmControls: 'getControlsState',
+        bpmClickMuted: 'getBpmClick'
       }),
       bpmControlsClass () {
         return {
           'Hero-bpmWrapper--hidden': this.bpmControls === 0,
-          'Hero-bpmWrapper--peek': this.bpmmControls === 1,
+          'Hero-bpmWrapper--peek': this.bpmControls === 1,
           'Hero-bpmWrapper--open': this.bpmControls === 2
         }
       },
       radialAnimation () {
         return {
-          animationDuration: this.getBpm()
+          animationDuration: this.getBpm(),
+          animationPlayState: this.appLoaded ? 'running' : 'paused'
         }
       }
     },
@@ -70,7 +80,13 @@
         incrementBpm: 'incrementBpm',
         decrementBpm: 'decrementBpm',
         peekControls: 'togglePeekControls',
-        openControls: 'toggleOpenControls'
+        openControls: 'toggleOpenControls',
+        toggleBpmClick: 'toggleBpmClick'
+      })
+    },
+    mounted () {
+      this.$on('appLoaded', () => {
+        this.appLoaded = true
       })
     }
   }

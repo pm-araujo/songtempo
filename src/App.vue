@@ -45,7 +45,8 @@ export default {
     'welcome-hero': WelcomeHero
   },
   mounted () {
-    console.log('fully loaded')
+    this.$children[0].$emit('appLoaded')
+    this.$children[1].$emit('appLoaded')
   }
 }
 </script>

@@ -19,8 +19,8 @@ $metro-height: 40px;
   transform: rotateZ(-45deg);
   transform-origin: bottom;
 
-  animation: 0.7s metronome ease-in-out;
-  animation-iteration-count: infinite;
+  animation: metronome 0.7s infinite ease-in-out;
+  animation-play-state: paused;
 }
 
 @keyframes metronome {
