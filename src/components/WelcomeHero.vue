@@ -1,6 +1,17 @@
 <template>
   <section class="Hero">
-    <div class="Hero-radialPulse"></div>
+    <div class="Hero-radialPulse" :style="radialAnimation"></div>
+
+    <div :class="bpmControlsClass" class="Hero-bpmWrapper">
+      <div class="Hero-bpmControls">
+        <button class="Button" @click="incrementBpm">Faster</button>
+        <button class="Button" @click="decrementBpm">Slower</button>
+        <button class="Button Button--roundBot" @click="openControls">
+          <icon :name="this.bpmControls === 2 ? 'angle-up' : 'angle-down'"></icon>
+        </button>
+      </div>
+    </div>
+
     <div class="Hero-wrapper u-marginTop--medium">
       <div class="Hero-welcomeMsg">
         Upload music file to see tempo stats
@@ -23,13 +34,6 @@
     <div class="Hero-footer u-marginTop--large">
 
       <div class="Hero-controls">
-        <button class="Button">
-          <icon name="music"></icon>
-        </button>
-
-        <button class="Button u-marginLeft--xSmall">Fast</button>
-
-        <button class="Button u-marginLeft--xSmall">Slow</button>
       </div>
 
     </div>
@@ -38,8 +42,37 @@
 </template>
 
 <script>
-  export default {
+  import { mapGetters, mapActions } from 'vuex'
 
+  export default {
+    computed: {
+      ...mapGetters({
+        bpmControls: 'getControlsState'
+      }),
+      bpmControlsClass () {
+        return {
+          'Hero-bpmWrapper--hidden': this.bpmControls === 0,
+          'Hero-bpmWrapper--peek': this.bpmmControls === 1,
+          'Hero-bpmWrapper--open': this.bpmControls === 2
+        }
+      },
+      radialAnimation () {
+        return {
+          animationDuration: this.getBpm()
+        }
+      }
+    },
+    methods: {
+      ...mapGetters({
+        getBpm: 'getBpmRadial'
+      }),
+      ...mapActions({
+        incrementBpm: 'incrementBpm',
+        decrementBpm: 'decrementBpm',
+        peekControls: 'togglePeekControls',
+        openControls: 'toggleOpenControls'
+      })
+    }
   }
 </script>
 

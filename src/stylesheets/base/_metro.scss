@@ -2,10 +2,9 @@ $metro-height: 40px;
 
 .Metronome {
   height: $metro-height;
-  display: inline-block;
   opacity: 0.75;
-  top: $Theme-size-xSmall;
   position: relative;
+  pointer-events: none;
 }
 
 .Metronome-base {
@@ -20,7 +19,7 @@ $metro-height: 40px;
   transform: rotateZ(-45deg);
   transform-origin: bottom;
 
-  animation: 1s metronome linear;
+  animation: 0.7s metronome ease-in-out;
   animation-iteration-count: infinite;
 }
 

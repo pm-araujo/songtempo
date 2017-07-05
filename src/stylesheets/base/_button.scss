@@ -1,7 +1,6 @@
 .Button {
-  @include font-properties(base);
-
   background: $Theme-color-light;
+  outline: 0;
   border: 0;
   color: $Theme-color-dark;
   cursor: pointer;
@@ -18,4 +17,12 @@
 
 .Button--round {
   border-radius: 50%;
+}
+
+.Button--roundTop {
+  border-radius: 50% 50% 0 0;
+}
+
+.Button--roundBot {
+  border-radius: 0 0 50% 50%;
 }

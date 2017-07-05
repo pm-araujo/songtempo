@@ -24,16 +24,49 @@
   color: $Theme-color-light;
   flex-direction: column;
   justify-content: center;
-  padding: $Theme-size-large $Theme-size-medium;
+  padding: $Theme-size-medium;
   position: relative;
   width: 100%;
 
   overflow: hidden;
 }
 
+.Hero-bpmWrapper {
+  position: absolute;
+  top: 0;
+
+  display: flex;
+  justify-content: center;
+
+  transform: translate(0, -50px);
+  transition: transform 0.3s ease;
+
+  z-index: 1;
+  width: 100%;
+}
+
+.Hero-bpmWrapper--hidden {
+  transform: translate(0, -75px);
+}
+
+.Hero-bpmWrapper--peek {
+  transform: translate(0, -50px);
+}
+
+.Hero-bpmWrapper--open {
+  transform: translate(0, 0);
+}
+
+.Hero-bpmControls {
+  @include font-properties(smaller);
+
+  display: flex;
+  flex-direction: column;
+}
+
 .Hero-radialPulse {
   z-index: 1;
-  animation: radialPulse .5s infinite linear forwards;
+  animation: radialPulse 1s infinite linear forwards;
   position: absolute;
   background-image: repeating-radial-gradient(
     circle at top center,
@@ -98,51 +131,4 @@
 .Hero-extensionList {
   @include font-properties(smaller);
   font-weight: 600;
-}
-
-/*
-.Pulser {
-  align-items: center;
-  background: rgba(41, 42, 45, 0.2);
-  border-radius: 50%;
-  //border: 10px solid rgba(41, 42, 45, 0.8);
-  //border-color: rgba(220, 220, 220, 0.3);
-  //box-shadow: 10px -10px rgba(41, 42, 45, 0.8);
-  display: flex;
-  justify-content: center;
-  height: 200px;
-  width: 200px;
-  position: absolute;
-  opacity: 0;
-  z-index: 1;
-
-  animation: pulse 1s cubic-bezier(0.215, 0.61, 0.355, 1);
-  animation-iteration-count: infinite;
-}
-*/
-.Pulser {
-  height: 50px;
-  box-shadow: 20px 25px 100px 10px rgba(41, 42, 45, 0.8);
-
-  border-radius: 50%;
-  z-index: 1;
-  //animation: pulse 1s cubic-bezier(0.215, 0.61, 0.355, 1);
-  animation: .25s pulse linear;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-  animation-direction: reverse;
-  animation-delay: .25s;
-}
-@keyframes pulse {
-  0% {
-    transform: scale( 1, 1);
-  }
-
-  90% {
-    transform: scale( 1.2, 1.2 );
-  }
-
-  100% {
-    transform: scale( 1, 1);
-  }
 }
