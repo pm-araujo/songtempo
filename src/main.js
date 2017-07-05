@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 
-import Store from './store/store'
+import store from './store/store'
 
 import Icon from 'vue-awesome/components/Icon.vue'
 import 'vue-awesome/icons'
@@ -16,6 +16,6 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   template: '<App/>',
-  Store,
+  store,
   components: { App }
 })
