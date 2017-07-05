@@ -1,16 +1,7 @@
 <template>
   <div id="app">
-    <header class="Navbar">
-      <audio ref="clickSound" preload="true" muted src="static/sounds/click.mp3"></audio>
-      <h1 class="MainHeader">
-        <span class="Text-orange">Song</span>
-        <div class="Metronome">
-          <img class="Metronome-base" src="~@/assets/imgs/metronome.svg">
-          <img class="Metronome-pointer" src="~@/assets/imgs/metro-pointer.svg">
-        </div>
-        <span>Tempo</span>
-      </h1>
-    </header>
+
+    <navbar></navbar>
 
     <welcome-hero></welcome-hero>
 
@@ -44,20 +35,17 @@
 </template>
 
 <script>
+import Navbar from './components/Navbar.vue'
 import WelcomeHero from './components/WelcomeHero.vue'
 
 export default {
   name: 'app',
   components: {
+    'navbar': Navbar,
     'welcome-hero': WelcomeHero
   },
   mounted () {
-    // TODO: init animations
-
-    setInterval(() => {
-      this.$refs.clickSound.currentTime = 0
-      this.$refs.clickSound.play()
-    }, 500)
+    console.log('fully loaded')
   }
 }
 </script>
