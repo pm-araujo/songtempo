@@ -13,7 +13,9 @@ export default new Vuex.Store({
     // 0 - Closed
     // 1 - Peeking
     // 2 - Open
-    'bpmControls': 0
+    'bpmControls': 1,
+
+    'bpmClickMuted': true
   },
   getters: {
     getControlsState (state) {
@@ -29,6 +31,9 @@ export default new Vuex.Store({
     },
     getBpm (state) {
       return state.bpm
+    },
+    getBpmClick (state) {
+      return state.bpmClickMuted
     }
   },
   mutations: {
@@ -43,6 +48,9 @@ export default new Vuex.Store({
     },
     setBpm (state, bpm) {
       state.bpm = bpm
+    },
+    toggleBpmClick (state) {
+      state.bpmClickMuted = !state.bpmClickMuted
     }
   },
   actions: {
@@ -73,6 +81,9 @@ export default new Vuex.Store({
       } else {
         context.commit('openControls')
       }
+    },
+    toggleBpmClick (context) {
+      context.commit('toggleBpmClick')
     }
   }
 })
