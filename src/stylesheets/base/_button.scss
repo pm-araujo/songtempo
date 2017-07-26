@@ -5,10 +5,9 @@
   color: $Theme-color-dark;
   cursor: pointer;
   font-weight: 600;
-  padding: $Theme-size-tiny;
-  padding-left: $Theme-size-xSmall;
-  padding-right: $Theme-size-xSmall;
+  padding: $Theme-size-xSmall;
   text-align: center;
+  border-radius: 3%;
 
   &:hover {
     background: $Theme-color-grey;

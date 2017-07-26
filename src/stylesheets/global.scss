@@ -17,6 +17,10 @@
 	box-sizing: border-box;
 }
 
+body {
+  background-color: $Theme-color-dark;
+}
+
 .fa-icon {
   width: auto;
   height: 1em; /* or any other relative font sizes */

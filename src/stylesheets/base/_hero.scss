@@ -24,7 +24,7 @@
   color: $Theme-color-light;
   flex-direction: column;
   justify-content: center;
-  padding: 100px;
+  padding: 140px;
   padding-left: $Theme-size-medium;
   padding-right: $Theme-size-medium;
   position: relative;
@@ -74,21 +74,26 @@
   z-index: 10;
 }
 
-.Hero-footer {
+.Hero-uploadZone {
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  width: 100%;
-  position: relative;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-.Hero-controls {
-  align-self: flex-end;
+.Hero-uploadForm {
+  @include font-properties(large)
+
   display: flex;
-  justify-content: flex-end;
-  z-index: 10;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
-.Hero-welcomeMsg {
+
+.Hero-recordForm {
+  @include font-properties(large)
+}
+
+.Hero-textTitle {
   @include font-properties(title);
   font-weight: 600;
   text-align: center;
