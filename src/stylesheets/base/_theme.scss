@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700");
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('https://fonts.googleapis.com/css?family=Pacifico:400');
 
 // Theme delays (transitions and such)
 $Theme-delay-fast: 0.1s;
@@ -9,7 +9,7 @@ $Theme-delay-slow: 0.6s;
 // Theme Font Faces
 $Theme-font-families: (
   sans: 'Open Sans',
-	title: 'Montserrat'
+	title: 'Pacifico'
 );
 
 // Theme sizes
@@ -23,6 +23,7 @@ $Theme-size-xLarge: 100px;
 $Theme-color-main: #F97508;
 $Theme-color-secondary: #002F4B;
 $Theme-color-light: #FFFFFF;
+$Theme-color-light-cream: #F8EFCE;
 $Theme-color-grey: #C0C0C0;
 $Theme-color-dark: #292A2D;
 $Theme-color-dark-light: #414348;
