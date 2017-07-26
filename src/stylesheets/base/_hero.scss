@@ -24,44 +24,13 @@
   color: $Theme-color-light;
   flex-direction: column;
   justify-content: center;
-  padding: $Theme-size-medium;
+  padding: 100px;
+  padding-left: $Theme-size-medium;
+  padding-right: $Theme-size-medium;
   position: relative;
   width: 100%;
 
   overflow: hidden;
-}
-
-.Hero-bpmWrapper {
-  position: absolute;
-  top: 0;
-
-  display: flex;
-  justify-content: center;
-
-  transform: translate(0, -75px);
-  transition: transform 0.3s ease;
-
-  z-index: 20;
-  width: 100%;
-}
-
-.Hero-bpmWrapper--hidden {
-  transform: translate(0, -100px);
-}
-
-.Hero-bpmWrapper--peek {
-  transform: translate(0, -75px);
-}
-
-.Hero-bpmWrapper--open {
-  transform: translate(0, 0);
-}
-
-.Hero-bpmControls {
-  @include font-properties(smaller);
-
-  display: flex;
-  flex-direction: column;
 }
 
 .Hero-radialPulse {
