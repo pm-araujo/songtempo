@@ -1,17 +1,22 @@
+$logoTextHeight: 80px;
+$logoTextMargin: 20px;
+
 .Navbar {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+
+  position: absolute;
+  top: 0;
 
   cursor: pointer;
 
-  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
-
-  padding-top: $Theme-size-xSmall;
+  padding-top: $Theme-size-tiny;
   padding-bottom: $Theme-size-tiny;
 
+  text-align: center;
+  user-select: none;
   width: 100%;
+
+  z-index: 999;
 }
 
 .Navbar-headerTitle {
@@ -19,18 +24,53 @@
 
   display: flex;
   justify-content: center;
-  pointer-events: none;
 
-  font-weight: 600;
-  color: $Theme-color-dark;
+  max-height: $logoTextHeight - $logoTextMargin;
+  overflow-y: hidden;
+}
+
+.Navbar-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  max-height: $logoTextHeight;
+
+  transition: transform 0.3s ease;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.Navbar-logo--alt {
+  align-items: flex-start;
+}
+
+.Navbar-logoText {
+  @include font-properties(title, desktop, title);
+
+  color: $Theme-color-main;
+  font-size: 40px;
+  font-weight: 400;
+  text-shadow: $Theme-color-dark-light 2px -1px ;
+
   margin: 0;
+}
+
+.Navbar-logoText--alt {
+  color: $Theme-color-light-cream;
 }
 
 .Navbar-bpmCount {
   @include font-properties(small);
 
-  color: $Theme-color-dark-light;
+  color: $Theme-color-light;
   font-weight: 600;
 
-  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.Navbar-bpmCount--flash {
+  opacity: 0.4;
 }

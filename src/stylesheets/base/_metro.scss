@@ -4,7 +4,8 @@ $metro-height: 40px;
   height: $metro-height;
   opacity: 0.75;
   position: relative;
-  pointer-events: none;
+  top: $Theme-size-xSmall;
+  z-index: 999;
 }
 
 .Metronome-base {
