@@ -8,6 +8,9 @@ import store from './store/store'
 import Icon from 'vue-awesome/components/Icon.vue'
 import 'vue-awesome/icons'
 
+import VueObserveVisibility from 'vue-observe-visibility/dist/vue-observe-visibility'
+
+Vue.use(VueObserveVisibility)
 Vue.component('icon', Icon)
 
 Vue.config.productionTip = false
