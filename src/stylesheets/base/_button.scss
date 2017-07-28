@@ -1,11 +1,19 @@
 .Button {
+  @include font-properties(base);
+
   background: $Theme-color-light;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   outline: 0;
   border: 0;
-  color: $Theme-color-dark;
+  color: $Theme-color-dark-light;
   cursor: pointer;
-  font-weight: 600;
-  padding: $Theme-size-xSmall;
+  font-weight: 700;
+  height: 40px;
+  padding: $Theme-size-tiny;
+  padding-left: $Theme-size-xSmall;
+  padding-right: $Theme-size-xSmall;
   text-align: center;
   border-radius: 3%;
 
