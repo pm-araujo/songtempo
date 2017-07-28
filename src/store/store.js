@@ -15,7 +15,10 @@ export default new Vuex.Store({
     // 2 - Open
     'bpmControls': 1,
 
-    'bpmClickMuted': true
+    'bpmClickMuted': true,
+
+    // Music Loaded Trigger
+    'musicLoaded': false
   },
   getters: {
     getControlsState (state) {
@@ -34,6 +37,9 @@ export default new Vuex.Store({
     },
     getBpmClick (state) {
       return state.bpmClickMuted
+    },
+    isMusicLoaded (state) {
+      return state.musicLoaded
     }
   },
   mutations: {
@@ -49,6 +55,9 @@ export default new Vuex.Store({
     setBpm (state, bpm) {
       state.bpm = bpm
     },
+    setMusicLoaded (state, musicLoaded) {
+      state.musicLoaded = musicLoaded
+    },
     toggleBpmClick (state) {
       state.bpmClickMuted = !state.bpmClickMuted
     }
@@ -63,6 +72,9 @@ export default new Vuex.Store({
       if (context.state.bpm > 60) {
         context.commit('setBpm', context.state.bpm - 30)
       }
+    },
+    setMusicLoaded (context, payload) {
+      context.commit('setMusicLoaded', payload)
     },
     togglePeekControls (context, payload) {
       if (context.state.bpmControls === 0) {

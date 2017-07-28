@@ -1,0 +1,13 @@
+.ScrollTop {
+  display: none;
+  
+  position: fixed;
+  bottom: 0px;
+  right: 0;
+  transition: transform 0.5s ease;
+  z-index: 999;
+}
+
+.ScrollTop-button {
+  @extend .Button;
+}

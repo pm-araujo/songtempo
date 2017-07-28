@@ -59,7 +59,7 @@
       },
       showControlsRev () {
         return {
-          transform: this.hoverState ? 'translateY(0px)' : 'translateY(-80px)'
+          transform: this.hoverState ? 'translateY(5px)' : 'translateY(-80px)'
         }
       }
     },

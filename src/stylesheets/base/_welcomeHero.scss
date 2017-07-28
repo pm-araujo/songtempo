@@ -1,4 +1,4 @@
-.Hero {
+.WelcomeHero {
   @include font-properties(base);
 
   align-items: center;
@@ -33,7 +33,7 @@
   overflow: hidden;
 }
 
-.Hero-radialPulse {
+.WelcomeHero-radialPulse {
   z-index: 1;
   animation: radialPulse 1s infinite linear forwards;
   animation-play-state: paused;
@@ -66,7 +66,7 @@
   }
 }
 
-.Hero-wrapper {
+.WelcomeHero-wrapper {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -74,13 +74,13 @@
   z-index: 10;
 }
 
-.Hero-uploadZone {
+.WelcomeHero-uploadZone {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
-.Hero-uploadForm {
+.WelcomeHero-uploadForm {
   @include font-properties(large)
 
   display: flex;
@@ -89,21 +89,39 @@
   text-align: center;
 }
 
-.Hero-recordForm {
+.WelcomeHero-recordForm {
   @include font-properties(large)
+
+  text-align: center;
 }
 
-.Hero-textTitle {
+.WelcomeHero-uploadHidden {
+  width: 0.1px;
+	height: 0.1px;
+
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.WelcomeHero-textTitle {
   @include font-properties(title);
   font-weight: 600;
   text-align: center;
 }
 
-.Hero-extensionTitle {
+.WelcomeHero-extensionTitle {
   @include font-properties(base);
 }
 
-.Hero-extensionList {
+.WelcomeHero-extensionList {
   @include font-properties(smaller);
   font-weight: 600;
+
+  transition: color .5s ease;
+}
+
+.WelcomeHero-extensionList--alert {
+  color: $Theme-color-red;
 }

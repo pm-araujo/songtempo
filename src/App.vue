@@ -1,9 +1,20 @@
 <template>
   <div id="app">
 
-    <navbar></navbar>
+    <div :style="scrollTopVisible" ref="scrollTop" class="ScrollTop u-marginRight--small u-marginBot--small">
+      <button class="ScrollTop-button">
+        <icon name="arrow-up"></icon>
+        <span class="u-marginLeft--xSmall">Try another file</span>
+      </button>
+    </div>
 
-    <welcome-hero></welcome-hero>
+    <navbar ref="navbar"></navbar>
+
+    <welcome-hero v-observe-visibility="toggleScrollTop" ref="welcomeHero"></welcome-hero>
+
+    <meta-hero ref="meta" v-show="isMusicLoaded"></meta-hero>
+
+    <stats-hero ref="stats" v-show="isMusicLoaded"></stats-hero>
 
     <footer class="Footer">
 
@@ -37,16 +48,46 @@
 <script>
 import Navbar from './components/Navbar.vue'
 import WelcomeHero from './components/WelcomeHero.vue'
+import MetaHero from './components/MetaHero.vue'
+import StatsHero from './components/StatsHero.vue'
+
+import {mapGetters} from 'vuex'
 
 export default {
   name: 'app',
+  data () {
+    return {
+      welcomeHeroVisible: false
+    }
+  },
   components: {
     'navbar': Navbar,
-    'welcome-hero': WelcomeHero
+    'welcome-hero': WelcomeHero,
+    'meta-hero': MetaHero,
+    'stats-hero': StatsHero
+  },
+  computed: {
+    ...mapGetters({
+      isMusicLoaded: 'isMusicLoaded'
+    }),
+    scrollTopVisible () {
+      return {
+        transform: this.welcomeHeroVisible ? 'translateY(60px)' : 'translateY(0px)'
+      }
+    }
+  },
+  methods: {
+    toggleScrollTop (isVisible, entry) {
+      this.welcomeHeroVisible = isVisible
+    }
   },
   mounted () {
-    this.$children[0].$emit('appLoaded')
-    this.$children[1].$emit('appLoaded')
+    this.$refs.navbar.$emit('appLoaded')
+    this.$refs.welcomeHero.$emit('appLoaded')
+
+    this.$on('fileLoaded', function () {
+      this.$refs.scrollTop.style.display = 'block'
+    })
   }
 }
 </script>

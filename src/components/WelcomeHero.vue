@@ -1,32 +1,34 @@
 <template>
-  <section class="Hero">
-    <div class="Hero-radialPulse" :style="radialAnimation"></div>
+  <section class="WelcomeHero">
+    <div class="WelcomeHero-radialPulse" :style="radialAnimation"></div>
 
-    <div class="Hero-wrapper u-marginTop--small">
-      <div class="Hero-textTitle">
+    <div class="WelcomeHero-wrapper u-marginTop--small">
+      <div class="WelcomeHero-textTitle">
         Get Rhythm stats for your music
       </div>
 
-      <div class="Hero-uploadZone u-marginTop--medium">
-        <div class="Hero-uploadForm">
-          <button class="Button">
+      <div class="WelcomeHero-uploadZone u-marginTop--medium" @visibilitychange="uploadHidden">
+        <div class="WelcomeHero-uploadForm">
+          <label class="Button">
+            <input type="file" class="WelcomeHero-uploadHidden" @change="fileChanged"
+              :accept="acceptedFormats"/>
             <icon name="upload"></icon>
             <span class="u-marginLeft--xSmall">Upload</span>
-          </button>
+          </label>
 
           <aside>
-            <div class="Hero-extensionTitle u-marginTop--xSmall">
+            <div class="WelcomeHero-extensionTitle u-marginTop--tiny">
               Supported extensions:
             </div>
-            <small class="Hero-extensionList">MP3, WAV, OGG, ACC</small>
+            <div ref="extList" class="WelcomeHero-extensionList u-marginTop--tiny">MP3, WAV, OGG, AAC</div>
           </aside>
         </div>
 
-        <div class="Hero-textTitle">
+        <div class="WelcomeHero-textTitle">
           Or
         </div>
 
-        <div class="Hero-recordForm u-marginLeft--medium">
+        <div class="WelcomeHero-recordForm u-marginLeft--medium">
           <button class="Button">
             <icon name="microphone"></icon>
             <span class="u-marginLeft--xSmall">Record</span>
@@ -42,7 +44,9 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
+
+  const audioTypes = 'audio/mp3,audio/ogg,audio/wav,audio/aac'
 
   export default {
     data () {
@@ -56,12 +60,35 @@
           animationDuration: this.getBpm(),
           animationPlayState: this.appLoaded ? 'running' : 'paused'
         }
+      },
+      acceptedFormats () {
+        return audioTypes
       }
     },
     methods: {
       ...mapGetters({
-        getBpm: 'getBpmRadial'
-      })
+        getBpm: 'getBpmRadial',
+        isMusicLoaded: 'isMusicLoaded'
+      }),
+      ...mapActions({
+        setMusicLoaded: 'setMusicLoaded'
+      }),
+      fileChanged (ev) {
+        let file = ev.path[0].files[0]
+
+        if (!audioTypes.includes(file.type)) {
+          // Flash red extensions
+          this.$refs.extList.classList.add('Hero-extensionList--alert')
+          setTimeout(() => {
+            this.$refs.extList.classList.remove('Hero-extensionList--alert')
+          }, 1000)
+        }
+        this.$parent.$emit('fileLoaded')
+        this.setMusicLoaded(true)
+      },
+      uploadHidden (ev) {
+        console.log(ev)
+      }
     },
     mounted () {
       this.$on('appLoaded', () => {

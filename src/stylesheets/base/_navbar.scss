@@ -1,5 +1,5 @@
 $logoTextHeight: 80px;
-$logoTextMargin: 20px;
+$logoTextMargin: 15px;
 
 .Navbar {
   background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
@@ -39,7 +39,7 @@ $logoTextMargin: 20px;
   transition: transform 0.3s ease;
 
   &:hover {
-    opacity: 0.5;
+    opacity: 0.8;
   }
 }
 
@@ -56,6 +56,12 @@ $logoTextMargin: 20px;
   text-shadow: $Theme-color-dark-light 2px -1px ;
 
   margin: 0;
+
+  transition: transform 0.1s ease;
+
+  &:active {
+    transform: scale(0.8, 0.8);
+  }
 }
 
 .Navbar-logoText--alt {
