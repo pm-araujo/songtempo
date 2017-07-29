@@ -51,6 +51,8 @@ import WelcomeHero from './components/WelcomeHero.vue'
 import MetaHero from './components/MetaHero.vue'
 import StatsHero from './components/StatsHero.vue'
 
+require('smoothscroll-polyfill').polyfill()
+
 import {mapGetters} from 'vuex'
 
 export default {
@@ -87,6 +89,11 @@ export default {
 
     this.$on('fileLoaded', function () {
       this.$refs.scrollTop.style.display = 'block'
+      setTimeout(() => {
+        this.$refs.meta.$el.scrollIntoView({
+          behavior: 'smooth'
+        })
+      }, 500)
     })
   }
 }
