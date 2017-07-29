@@ -7,7 +7,7 @@
         Get Rhythm stats for your music
       </div>
 
-      <div class="WelcomeHero-uploadZone u-marginTop--medium" @visibilitychange="uploadHidden">
+      <div class="WelcomeHero-uploadZone u-marginTop--medium">
         <div class="WelcomeHero-uploadForm">
           <label class="Button">
             <input type="file" class="WelcomeHero-uploadHidden" @change="fileChanged"
@@ -78,16 +78,14 @@
 
         if (!audioTypes.includes(file.type)) {
           // Flash red extensions
-          this.$refs.extList.classList.add('Hero-extensionList--alert')
+          this.$refs.extList.classList.add('WelcomeHero-extensionList--alert')
           setTimeout(() => {
-            this.$refs.extList.classList.remove('Hero-extensionList--alert')
+            this.$refs.extList.classList.remove('WelcomeHero-extensionList--alert')
           }, 1000)
+        } else {
+          this.setMusicLoaded(true)
+          this.$parent.$emit('fileLoaded')
         }
-        this.$parent.$emit('fileLoaded')
-        this.setMusicLoaded(true)
-      },
-      uploadHidden (ev) {
-        console.log(ev)
       }
     },
     mounted () {
