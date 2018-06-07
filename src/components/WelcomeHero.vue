@@ -1,6 +1,7 @@
 <template>
-  <section class="WelcomeHero">
-    <div class="WelcomeHero-radialPulse" :style="radialAnimation"></div>
+  <section class="WelcomeHero" :style="radialAnimation">
+
+    <audio ref="clickSound" preload="true" src="static/sounds/click.mp3"></audio>
 
     <div class="WelcomeHero-wrapper u-marginTop--small">
       <div class="WelcomeHero-textTitle">
@@ -55,6 +56,9 @@
       }
     },
     computed: {
+      ...mapGetters({
+        bpmClickMuted: 'getBpmClick'
+      }),
       radialAnimation () {
         return {
           animationDuration: this.getBpm(),
@@ -73,6 +77,10 @@
       ...mapActions({
         setMusicLoaded: 'setMusicLoaded'
       }),
+      playClick () {
+        this.$refs.clickSound.currentTime = 0
+        this.$refs.clickSound.play()
+      },
       fileChanged (ev) {
         let file = ev.path[0].files[0]
 
@@ -86,6 +94,13 @@
           this.setMusicLoaded(true)
           this.$parent.$emit('fileLoaded')
         }
+      }
+    },
+    watch: {
+      bpmClickMuted (val) {
+        if (!val) {
+          this.$refs.radial.addEventListener('animationiteration', this.playClick)
+        } else this.$refs.radial.removeEventListener('animationiteration', this.playClick)
       }
     },
     mounted () {

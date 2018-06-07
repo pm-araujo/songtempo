@@ -1,7 +1,6 @@
 <template>
   <header class="Navbar" @mouseover="hoverEnter" @mouseout="hoverLeave"
     @click="hoverState=!hoverState">
-    <audio ref="clickSound" preload="true" src="static/sounds/click.mp3"></audio>
 
     <div class="Navbar-headerTitle" @mouseover.prevent @mouseout.prevent>
 
@@ -30,7 +29,6 @@
 
 <script>
   import { mapGetters, mapActions } from 'vuex'
-  import HighResolutionTimer from '../timer.js'
 
   export default {
     data () {
@@ -69,18 +67,6 @@
         decrementBpm: 'decrementBpm',
         toggleBpmClick: 'toggleBpmClick'
       }),
-      clickToggle () {
-        if (this.clickInterval.stop) this.clickInterval.stop()
-
-        if (this.bpmClickMuted) return
-
-        this.clickInterval = new HighResolutionTimer(60000 / this.bpm, () => {
-          this.$refs.clickSound.currentTime = 0
-          this.$refs.clickSound.play()
-        })
-
-        this.clickInterval.run()
-      },
       fasterBpm (ev) {
         this.$refs.bpmCount.classList.add('Navbar-bpmCount--flash')
         setTimeout(() => {
@@ -110,11 +96,7 @@
       }
     },
     watch: {
-      bpm () {
-        this.clickToggle()
-      },
       bpmClickMuted () {
-        this.clickToggle()
       }
     },
     mounted () {
