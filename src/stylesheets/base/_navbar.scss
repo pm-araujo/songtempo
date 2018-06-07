@@ -2,7 +2,7 @@ $logoTextHeight: 80px;
 $logoTextMargin: 15px;
 
 .Navbar {
-  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background: radial-gradient(circle closest-side, rgba(255,255,255,0.2), rgba(255,255,255,0));
 
   position: absolute;
   top: 0;
