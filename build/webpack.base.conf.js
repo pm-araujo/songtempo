@@ -9,8 +9,11 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './src/main.js'
-  },
+		app: './src/main.js',
+		styles: [
+			'./node_modules/normalize.css/normalize.css'
+		]
+	},
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
